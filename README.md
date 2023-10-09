@@ -64,45 +64,67 @@ pip3 install -r requirements.txt
 # <Create config.py appropriately>
 python3 main.py
 
-Admin Commands
-/start: Start the bot or get posts.
-/batch: Create a link for multiple posts.
-/genlink: Create a link for one post.
-/users: View bot statistics.
-/broadcast: Broadcast messages to bot users.
-/stats: Check the bot's uptime.
-Configuration Variables
-API_HASH: Your API Hash from my.telegram.org.
-APP_ID: Your API ID from my.telegram.org.
-TG_BOT_TOKEN: Your bot token from @BotFather.
-OWNER_ID: Your Telegram ID.
-CHANNEL_ID: Your Channel ID (e.g., -100xxxxxxxx).
-DATABASE_URL: Your MongoDB URL.
-DATABASE_NAME: Your MongoDB session name.
-ADMINS: Optional list of user IDs for Admins (space-separated).
-START_MESSAGE: Optional: Customize the bot's start message using HTML and fillings.
-FORCE_SUB_MESSAGE: Optional: Customize the force-subscribe message using HTML.
-FORCE_SUB_CHANNEL: Optional: ForceSub Channel ID (leave as 0 to disable force-sub).
-PROTECT_CONTENT: Optional: True to prevent forwarding of files.
-Customizable Messages and Text
-CUSTOM_CAPTION: Customize the caption text for documents using HTML and fillings.
-DISABLE_CHANNEL_BUTTON: Set to True to disable the channel share button (default is False).
-BOT_STATS_TEXT: Customize the text for the /stats command using HTML and fillings.
-USER_REPLY_TEXT: Customize the text to show when a user sends any message using HTML.
-Fillings
-START_MESSAGE | FORCE_SUB_MESSAGE
-{first}: User's first name.
-{last}: User's last name.
-{id}: User's ID.
-{mention}: Mention the user.
-{username}: User's username.
-CUSTOM_CAPTION
-{filename}: File name of the document.
-{previouscaption}: Original caption.
-CUSTOM_STATS
-{uptime}: Bot's uptime.
-Support
-Join our Telegram Group for support and assistance, and visit our Channel for updates and announcements.
+<details>
+<summary><b>Admin Commands</b></summary>
+  
+- <code>/start</code>: Start the bot or get posts.
+- <code>/batch</code>: Create a link for multiple posts.
+- <code>/genlink</code>: Create a link for one post.
+- <code>/users</code>: View bot statistics.
+- <code>/broadcast</code>: Broadcast messages to bot users.
+- <code>/stats</code>: Check the bot's uptime.
+
+</details>
+
+<details>
+<summary><b>Configuration Variables</b></summary>
+
+- <code>API_HASH</code>: Your API Hash from my.telegram.org.
+- <code>APP_ID</code>: Your API ID from my.telegram.org.
+- <code>TG_BOT_TOKEN</code>: Your bot token from @BotFather.
+- <code>OWNER_ID</code>: Your Telegram ID.
+- <code>CHANNEL_ID</code>: Your Channel ID (e.g., -100xxxxxxxx).
+- <code>DATABASE_URL</code>: Your MongoDB URL.
+- <code>DATABASE_NAME</code>: Your MongoDB session name.
+- <code>ADMINS</code>: Optional list of user IDs for Admins (space-separated).
+- <code>START_MESSAGE</code>: Optional: Customize the bot's start message using HTML and <a href="#start_message-fillings">fillings</a>.
+- <code>FORCE_SUB_MESSAGE</code>: Optional: Customize the force-subscribe message using HTML.
+- <code>FORCE_SUB_CHANNEL</code>: Optional: ForceSub Channel ID (leave as 0 to disable force-sub).
+- <code>PROTECT_CONTENT</code>: Optional: True to prevent forwarding of files.
+
+</details>
+
+<details>
+<summary><b>Customizable Messages and Text</b></summary>
+
+- <code>CUSTOM_CAPTION</code>: Customize the caption text for documents using HTML and <a href="#custom_caption-fillings">fillings</a>.
+- <code>DISABLE_CHANNEL_BUTTON</code>: Set to <code>True</code> to disable the channel share button (default is <code>False</code>).
+- <code>BOT_STATS_TEXT</code>: Customize the text for the <code>/stats</code> command using HTML and <a href="#custom_stats-fillings">fillings</a>.
+- <code>USER_REPLY_TEXT</code>: Customize the text to show when a user sends any message using HTML.
+
+</details>
+
+<details>
+<summary><b>Fillings</b></summary>
+
+### START_MESSAGE | FORCE_SUB_MESSAGE
+
+- <code>{first}</code>: User's first name.
+- <code>{last}</code>: User's last name.
+- <code>{id}</code>: User's ID.
+- <code>{mention}</code>: Mention the user.
+- <code>{username}</code>: User's username.
+
+### CUSTOM_CAPTION
+
+- <code>{filename}</code>: File name of the document.
+- <code>{previouscaption}</code>: Original caption.
+
+### CUSTOM_STATS
+
+- <code>{uptime}</code>: Bot's uptime.
+
+</details>
 
 If you encounter any bugs or have feature requests, please report them in our Telegram support group.
 
