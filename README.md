@@ -1,8 +1,8 @@
-# File-sharing-Bot
+# File-Sharing-Bot
 
 <p align="center">
   <a href="https://www.python.org">
-    <img src="http://ForTheBadge.com/images/badges/made-with-python.svg" width ="250">
+    <img src="http://ForTheBadge.com/images/badges/made-with-python.svg" width="250">
   </a>
   <a href="https://t.me/CodeXBotz">
     <img src="https://github.com/CodeXBotz/PyrogramGenStr/blob/main/resources/madebycodex-badge.svg" width="250">
@@ -19,141 +19,122 @@
   </a>
   <a href="https://github.com/CodeXBotz/File-Sharing-Bot/fork">
     <img src="https://img.shields.io/github/forks/CodeXBotz/File-Sharing-Bot?label=Fork&style=social">
-  </a>  
+  </a>
 </p>
 
+Telegram Bot for storing posts and documents, accessible via special links. This bot can be a valuable tool for various use cases.
 
-Telegram Bot to store Posts and Documents and it can Access by Special Links.
-I Guess This Will Be Usefull For Many People.....😇. 
+## Features
+- Highly customizable.
+- Customizable welcome and force-subscription messages.
+- Support for multiple posts within a single link.
+- Can be easily deployed on Heroku.
 
-##
+## Setup
 
-**If you need any more modes in repo or If you find out any bugs, mention in [@codexbotzsupport ](https://www.telegram.dog/codexbotzsupport)**
+To set up the bot:
 
-**Make sure to see [contributing.md](https://github.com/CodeXBotz/File-Sharing-Bot/blob/main/CONTRIBUTING.md) for instructions on contributing to the project!**
+1. Add the bot to a Database Channel with all necessary permissions.
+2. Add the bot to a ForceSub channel as an admin with the "Invite Users via Link" permission if you enable ForceSub.
 
+## Installation
 
+### Deploy on Heroku
+Before deploying on Heroku, make sure to fork this repository and change its name.
 
-### Features
-- Fully customisable.
-- Customisable welcome & Forcesub messages.
-- More than one Posts in One Link.
-- Can be deployed on heroku directly.
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-### Setup
+For detailed deployment instructions, watch this [tutorial video](https://youtu.be/LCrkRTMkmzE) on YouTube.
 
-- Add the bot to Database Channel with all permission
-- Add bot to ForceSub channel as Admin with Invite Users via Link Permission if you enabled ForceSub 
+### Deploy on Railway
 
-##
-### Installation
-#### Deploy on Heroku
-**BEFORE YOU DEPLOY ON HEROKU, YOU SHOULD FORK THE REPO AND CHANGE ITS NAME TO ANYTHING ELSE**<br>
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)</br>
-<a href="https://youtu.be/LCrkRTMkmzE">
-  <img src="https://img.shields.io/badge/How%20to-Deploy-red?logo=youtube" width="147">
-</a><br>
-**Check This Tutorial Video on YouTube for any Help**<br>
-**Thanks to [Erich](https://t.me/ErichDaniken) and his [InFoTel](https://t.me/InFoTel_Group) for this Video**
-
-#### Deploy on Railway
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/1jKLr4)
 
-#### Deploy on Koyeb
+### Deploy on Koyeb
 
-The fastest way to deploy the application is to click the **Deploy to Koyeb** button below.
-
+The fastest way to deploy the application is by clicking the **Deploy to Koyeb** button below.
 
 [![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?type=git&repository=github.com/CodeXBotz/File-Sharing-Bot&branch=koyeb&name=filesharingbot)
 
-
-#### Deploy in your VPS
-````bash
+### Deploy on Your VPS
+bash
 git clone https://github.com/CodeXBotz/File-Sharing-Bot
 cd File-Sharing-Bot
 pip3 install -r requirements.txt
 # <Create config.py appropriately>
 python3 main.py
-````
 
-### Admin Commands
+<details>
+<summary><b>Admin Commands</b></summary>
+  
+- <code>/start</code>: Start the bot or get posts.
+- <code>/batch</code>: Create a link for multiple posts.
+- <code>/genlink</code>: Create a link for one post.
+- <code>/users</code>: View bot statistics.
+- <code>/broadcast</code>: Broadcast messages to bot users.
+- <code>/stats</code>: Check the bot's uptime.
 
-```
-/start - start the bot or get posts
+</details>
 
-/batch - create link for more than one posts
+<details>
+<summary><b>Configuration Variables</b></summary>
 
-/genlink - create link for one post
+- <code>API_HASH</code>: Your API Hash from my.telegram.org.
+- <code>APP_ID</code>: Your API ID from my.telegram.org.
+- <code>TG_BOT_TOKEN</code>: Your bot token from @BotFather.
+- <code>OWNER_ID</code>: Your Telegram ID.
+- <code>CHANNEL_ID</code>: Your Channel ID (e.g., -100xxxxxxxx).
+- <code>DATABASE_URL</code>: Your MongoDB URL.
+- <code>DATABASE_NAME</code>: Your MongoDB session name.
+- <code>ADMINS</code>: Optional list of user IDs for Admins (space-separated).
+- <code>START_MESSAGE</code>: Optional: Customize the bot's start message using HTML and <a href="#start_message-fillings">fillings</a>.
+- <code>FORCE_SUB_MESSAGE</code>: Optional: Customize the force-subscribe message using HTML.
+- <code>FORCE_SUB_CHANNEL</code>: Optional: ForceSub Channel ID (leave as 0 to disable force-sub).
+- <code>PROTECT_CONTENT</code>: Optional: True to prevent forwarding of files.
 
-/users - view bot statistics
+</details>
 
-/broadcast - broadcast any messages to bot users
+<details>
+<summary><b>Customizable Messages and Text</b></summary>
 
-/stats - checking your bot uptime
-```
+- <code>CUSTOM_CAPTION</code>: Customize the caption text for documents using HTML and <a href="#custom_caption-fillings">fillings</a>.
+- <code>DISABLE_CHANNEL_BUTTON</code>: Set to <code>True</code> to disable the channel share button (default is <code>False</code>).
+- <code>BOT_STATS_TEXT</code>: Customize the text for the <code>/stats</code> command using HTML and <a href="#custom_stats-fillings">fillings</a>.
+- <code>USER_REPLY_TEXT</code>: Customize the text to show when a user sends any message using HTML.
 
-### Variables
+</details>
 
-* `API_HASH` Your API Hash from my.telegram.org
-* `APP_ID` Your API ID from my.telegram.org
-* `TG_BOT_TOKEN` Your bot token from @BotFather
-* `OWNER_ID` Must enter Your Telegram Id
-* `CHANNEL_ID` Your Channel ID eg:- -100xxxxxxxx
-* `DATABASE_URL` Your mongo db url
-* `DATABASE_NAME` Your mongo db session name
-* `ADMINS` Optional: A space separated list of user_ids of Admins, they can only create links
-* `START_MESSAGE` Optional: start message of bot, use HTML and <a href='https://github.com/codexbotz/File-Sharing-Bot/blob/main/README.md#start_message'>fillings</a>
-* `FORCE_SUB_MESSAGE`Optional:Force sub message of bot, use HTML and Fillings
-* `FORCE_SUB_CHANNEL` Optional: ForceSub Channel ID, leave 0 if you want disable force sub
-* `PROTECT_CONTENT` Optional: True if you need to prevent files from forwarding
+<details>
+<summary><b>Fillings</b></summary>
 
-### Extra Variables
+### START_MESSAGE | FORCE_SUB_MESSAGE
 
-* `CUSTOM_CAPTION` put your Custom caption text if you want Setup Custom Caption, you can use HTML and <a href='https://github.com/CodeXBotz/File-Sharing-Bot/blob/main/README.md#custom_caption'>fillings</a> for formatting (only for documents)
-* `DISABLE_CHANNEL_BUTTON` Put True to Disable Channel Share Button, Default if False
-* `BOT_STATS_TEXT` put your custom text for stats command, use HTML and <a href='https://github.com/codexbotz/File-Sharing-Bot/blob/main/README.md#custom_stats'>fillings</a>
-* `USER_REPLY_TEXT` put your text to show when user sends any message, use HTML
+- <code>{first}</code>: User's first name.
+- <code>{last}</code>: User's last name.
+- <code>{id}</code>: User's ID.
+- <code>{mention}</code>: Mention the user.
+- <code>{username}</code>: User's username.
 
+### CUSTOM_CAPTION
 
-### Fillings
-#### START_MESSAGE | FORCE_SUB_MESSAGE
+- <code>{filename}</code>: File name of the document.
+- <code>{previouscaption}</code>: Original caption.
 
-* `{first}` - User first name
-* `{last}` - User last name
-* `{id}` - User ID
-* `{mention}` - Mention the user
-* `{username}` - Username
+### CUSTOM_STATS
 
-#### CUSTOM_CAPTION
+- <code>{uptime}</code>: Bot's uptime.
 
-* `{filename}` - file name of the Document
-* `{previouscaption}` - Original Caption
+</details>
 
-#### CUSTOM_STATS
+If you encounter any bugs or have feature requests, please report them in our Telegram support group.
 
-* `{uptime}` - Bot Uptime
+Credits
+Thanks to Dan for his awesome Pyrogram library.
+Thanks to our support group members for their valuable input and contributions.
+License
+GNU GPLv3 Image
 
+File-Sharing-Bot is Free Software released under the terms of the GNU General Public License, version 3 or later.
 
-## Support   
-Join Our [Telegram Group](https://www.telegram.dog/codexbotzsupport) For Support/Assistance And Our [Channel](https://www.telegram.dog/codexbotz) For Updates.   
-   
-Report Bugs, Give Feature Requests There..   
-
-### Credits
-
-- Thanks To Dan For His Awsome [Libary](https://github.com/pyrogram/pyrogram)
-- Our Support Group Members
-
-### Licence
-[![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)](http://www.gnu.org/licenses/gpl-3.0.en.html)  
-
-[FILE-SHARING-BOT](https://github.com/CodeXBotz/File-Sharing-Bot/) is Free Software: You can use, study share and improve it at your
-will. Specifically you can redistribute and/or modify it under the terms of the
-[GNU General Public License](https://www.gnu.org/licenses/gpl.html) as
-published by the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version. 
-
-##
-
-   **Star this Repo if you Liked it ⭐⭐⭐**
+If you found this repository helpful, consider giving it a star ⭐⭐⭐
 

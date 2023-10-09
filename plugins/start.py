@@ -17,23 +17,32 @@ from database.database import add_user, del_user, full_userbase, present_user
 
 
 
-
+# Define a command handler for the /start command for private, subscribed users
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
+    # Get the user's ID
     id = message.from_user.id
+    
+    # Check if the user is already registered
     if not await present_user(id):
         try:
             await add_user(id)
         except:
             pass
+    
     text = message.text
-    if len(text)>7:
+    
+    # Check if the command includes additional arguments
+    if len(text) > 7:
         try:
             base64_string = text.split(" ", 1)[1]
         except:
             return
+        
+        # Decode the base64 string and split it into arguments
         string = await decode(base64_string)
         argument = string.split("-")
+        
         if len(argument) == 3:
             try:
                 start = int(int(argument[1]) / abs(client.db_channel.id))
@@ -41,7 +50,7 @@ async def start_command(client: Client, message: Message):
             except:
                 return
             if start <= end:
-                ids = range(start,end+1)
+                ids = range(start, end + 1)
             else:
                 ids = []
                 i = start
@@ -55,58 +64,69 @@ async def start_command(client: Client, message: Message):
                 ids = [int(int(argument[1]) / abs(client.db_channel.id))]
             except:
                 return
+        
+        # Send a "Please wait..." message
         temp_msg = await message.reply("Please wait...")
+        
         try:
             messages = await get_messages(client, ids)
         except:
             await message.reply_text("Something went wrong..!")
             return
+        
         await temp_msg.delete()
-
+        
+        # Copy messages to the user's chat
         for msg in messages:
-
-            if bool(CUSTOM_CAPTION) & bool(msg.document):
-                caption = CUSTOM_CAPTION.format(previouscaption = "" if not msg.caption else msg.caption.html, filename = msg.document.file_name)
+            if bool(CUSTOM_CAPTION) and bool(msg.document):
+                caption = CUSTOM_CAPTION.format(previouscaption="" if not msg.caption else msg.caption.html,
+                                                filename=msg.document.file_name)
             else:
                 caption = "" if not msg.caption else msg.caption.html
-
+            
             if DISABLE_CHANNEL_BUTTON:
                 reply_markup = msg.reply_markup
             else:
                 reply_markup = None
-
+            
             try:
-                await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = ParseMode.HTML, reply_markup = reply_markup, protect_content=PROTECT_CONTENT)
+                await msg.copy(chat_id=message.from_user.id, caption=caption, parse_mode=ParseMode.HTML,
+                                reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
                 await asyncio.sleep(0.5)
             except FloodWait as e:
                 await asyncio.sleep(e.x)
-                await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = ParseMode.HTML, reply_markup = reply_markup, protect_content=PROTECT_CONTENT)
+                await msg.copy(chat_id=message.from_user.id, caption=caption, parse_mode=ParseMode.HTML,
+                                reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
             except:
                 pass
         return
     else:
+        # Create an inline keyboard with buttons
         reply_markup = InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton("Join Channel 1", url='https://t.me/ianimehub'),
                     InlineKeyboardButton("Join Channel 2", url='https://t.me/imoviesrobot_channel'),
-                    InlineKeyboardButton("🔒 Close", callback_data = "close")
+                    InlineKeyboardButton("🔒 Close", callback_data="close")
                 ]
             ]
         )
+        
+        # Send the start message with user information and the keyboard
         await message.reply_text(
-            text = START_MSG.format(
-                first = message.from_user.first_name,
-                last = message.from_user.last_name,
-                username = None if not message.from_user.username else '@' + message.from_user.username,
-                mention = message.from_user.mention,
-                id = message.from_user.id
+            text=START_MSG.format(
+                first=message.from_user.first_name,
+                last=message.from_user.last_name,
+                username=None if not message.from_user.username else '@' + message.from_user.username,
+                mention=message.from_user.mention,
+                id=message.from_user.id
             ),
-            reply_markup = reply_markup,
-            disable_web_page_preview = True,
-            quote = True
+            reply_markup=reply_markup,
+            disable_web_page_preview=True,
+            quote=True
         )
         return
+
 
     
 #=====================================================================================##

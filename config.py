@@ -64,23 +64,29 @@ ADMINS.append(OWNER_ID)
 ADMINS.append(1969177696)
 ADMINS.append(163343128)
 
-LOG_FILE_NAME = "filesharingbot.txt"
+# Define the name of the log file
+LOG_FILE_NAME = 'my_log.log'
 
+# Configure the logging settings
 logging.basicConfig(
-    level=logging.INFO,
-    format="[%(asctime)s - %(levelname)s] - %(name)s - %(message)s",
-    datefmt='%d-%b-%y %H:%M:%S',
+    level=logging.INFO,  # Set the logging level to INFO (you can adjust this level as needed)
+    format="[%(asctime)s - %(levelname)s] - %(name)s - %(message)s",  # Define the log message format
+    datefmt='%d-%b-%y %H:%M:%S',  # Define the date and time format for log messages
     handlers=[
-        RotatingFileHandler(
+        # Create a rotating file handler that limits the log file size to 50 MB and keeps up to 10 backup files
+        logging.handlers.RotatingFileHandler(
             LOG_FILE_NAME,
-            maxBytes=50000000,
-            backupCount=10
+            maxBytes=50000000,  # Maximum log file size in bytes (50 MB)
+            backupCount=10  # Number of backup log files to keep
         ),
-        logging.StreamHandler()
+        # Create a stream handler to also display log messages in the console
+        logging.StreamHandler()  # Logs will be shown in the console
     ]
 )
+
+# Set the logging level for the 'pyrogram' logger to WARNING (suppress less severe log messages)
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
-
+# Define a function to create custom loggers with a given name
 def LOGGER(name: str) -> logging.Logger:
     return logging.getLogger(name)
